@@ -1,142 +1,143 @@
-Git ����Э����������
+Git 代码协调管理工具
 
-һ��Ϊʲôʹ�ô����������
-	1.��ֹ���붪ʧ��������
+一、为什么使用代码管理工具
+	1.防止代码丢失，做备份
 
-	2.������İ汾����
+	2.做代码的版本控制
 
-	3.������˿������з�֧����
+	3.方便多人开发进行分支管理
 
-����git��ʲô�ص�
-	1.git��һ����Դ�ķֲ�ʽ�����������
+二、git有什么特点
+	1.git是一个开源的分布式代码管理工具
 
-	2.git���Ը��õ�֧�ַ�֧���������Э��
+	2.git可以更好的支持分支，方便多人协调
 
-	3.git������linux unix����ϵͳ��������������
+	3.git多用于linux unix操作系统，可以脱网操作
 
-	4.git���ݴ����ٶȸ��죬����ģʽ����
+	4.git数据传输速度更快，工作模式更多
 
-����git ��װ����
-	1.��װ��sudo apt-get install git
+三、git 安装配置
+	1.安装：sudo apt-get install git
 
-	2.�����û�������
-		1���������git config
+	2.配置用户和邮箱
+		1）配置命令：git config
 
-				����ѡ�� - -system ����������ϵͳ�����û�
-													 - -global ���������ڵ�ǰ�û�������Ŀ
+		命令选项 
+		- -system 配置作用于系统所有用户
+		- -global 配置作用于当前用户所有项目
 
-		2�������û�����
-					git config  - -global  user.name  Spring
+		2）配置用户名：
+		git config  - -global  user.name  Spring
 
-		3����������
-					git config  - -global  user.email  ����
+		3）配置邮箱
+		git config  - -global  user.email  邮箱
 
-�ġ�git��������
-	1.��ʼ��git�ֿ�
-			git init
+四、git基本操作
+	1.初始化git仓库
+		git init
 
-	2.�鿴��֧״̬
-			git status
+	2.查看分支状态
+		git status
 
-	3.�ļ��ύ���ݴ���
+	3.文件提交到暂存区
 		 git add [files]
 
-		 ȡ���ݴ����
+		 取消暂存操作
 		 git rm --cached [files]
 
-	4.���ļ����浽���زֿ�
+	4.将文件保存到本地仓库
 		 git commit -m 'some files'
 
-	5.�鿴commit��־
+	5.查看commit日志
 		 git log
 
-	6.�汾����
+	6.版本控制
 		 git reset --hard [HEAD^ or commit_id]
 
-			 HEAD^ ��ʾ�˻ص���һ���汾
-			 commit_id ��ʾ�˻ص�ָ���汾
+			 HEAD^ 表示退回到上一个版本
+			 commit_id 表示退回到指定版本
 
-	7.�鿴��ʷ������¼
+	7.查看历史操作记录
 		 git reflog
 
-	8.��������
-		 git diff file �ȽϹ������Ͳֿ��ļ�������
+	8.其他命令
+		 git diff file 比较工作区和仓库文件的区别
 
-		 git checkout --file �����������޸�
+		 git checkout --file 放弃工作区修改
 
-		 git rm files ���ļ�ɾ�����ӵ��ݴ�����¼
+		 git rm files 将文件删除添加到暂存区记录
 
-		 git mv files ���ļ��ƶ����ݴ���
+		 git mv files 将文件移动到暂存区
 
-�塢��ǩ����
-	1.ʲô�Ǳ�ǩ
-			������Ҫ�Ĺ�����̱����汾��λ�����ӵ�һ������״̬�ı�����
+五、标签管理
+	1.什么是标签
+			即在重要的工作里程碑（版本）位置添加的一个工作状态的保存标记
 
-	2.��ǩ����
-			1��������ǩ
-							git tag v1.0 [commit_id] -m 'some message'
+	2.标签命令
+			1）创建标签
+				git tag v1.0 [commit_id] -m 'some message'
 
-			2���鿴��ǩ
-							git show v1.0 
+			2）查看标签
+				git show v1.0 
 
-			3��ȥ��ĳһ����ǩ�汾
-							git reset --hard v1.0
+			3）去往某一个标签版本
+				git reset --hard v1.0
 
-			4��ɾ����ǩ
-							git tag -d v2.0
+			4）删除标签
+				git tag -d v2.0
 
-������֧����
-	1.��֧����ȡĳ��ԭ���룬��������������Ӱ��
+六、分支操作
+	1.分支即获取某个原代码，单独开发，互不影响
 
-	2.��֧����
-		1���鿴����
-						git branch
+	2.分支命令
+		1）查看命令
+			git branch
 
-		2��������֧
-						git branch [branch_name]
-						ĳ����֧�����µķ�֧���µķ�֧ӵ��ԭ�з�֧��������
+		2）创建分支
+			git branch [branch_name]
+			某个分支创建新的分支，新的分支拥有原有分支所有内容
 
-		3���л���֧
-					git checkout [branch_name]
-					git checkout -b [branch_name] �������л�����֧
+		3）切换分支
+			git checkout [branch_name]
+			git checkout -b [branch_name] 创建并切换到分支
 
-		4���ϲ���֧����
-					git merge [branch_name]
-					���Ҫ��B��֧�ϲ���A����ϲ�������Ҫ��A��֧�н���
+		4）合并分支工作
+			git merge [branch_name]
+			如果要将B分支合并到A，则合并操作需要在A分支中进行
 
-		5��ɾ����֧
+		5）删除分支
 		       git branch -d [branch_name]
-					 �����֧û�б��ϲ�����Ҫ��-Dɾ��
+		       如果分支没有被合并则需要用-D删除
 
-�ߡ�Զ�ֿ̲����
-			1.Զ�ֿ̲⣺Զ�������ϵĲֿ⣬ʵ��git�Ƿֲ�ʽ�ģ�
-					ÿ̨������git�ṹ���ƣ�ֻ�ǰ����������ϵ�git�ֿ��֮ΪԶ�ֿ̲�
+七、远程仓库操作
+			1.远程仓库：远程主机上的仓库，实际git是分布式的，
+					每台主机的git结构类似，只是把其他主机上的git仓库称之为远程仓库
 
-			2.���������ֿ�
-				1������Ŀ¼������Ŀ¼����
-								mkdir gitrepo
-								chown tarena��tarena gitrepo
+			2.创建共享仓库
+				1）创建目录，设置目录属主
+					mkdir gitrepo
+					chown tarena：tarena gitrepo
 
-				2�������ļ�������Ϊ�ļ��ɹ�����git�ֿ�
-								git init --bare ftp.git
+				2）将该文件夹设置为文件可共享的git仓库
+					git init --bare ftp.git
 
-				3������git�����ļ�������
-								cjow -R tarena��tarena ftp.git
+				3）设置git配置文件夹属主
+					cjow -R tarena：tarena ftp.git
 
-			3.��Զ���ϴ���Ŀ
-				1������Զ������
-						git remote add origin ������@����IP��·��
+			3.向远程上传项目
+				1）连接远程主机
+					git remote add origin 主机名@主机IP：路径
 
-				2���ϴ�����
-						git push -u origin �ļ���
-						����Է���������
+				2）上传代码
+					git push -u origin 文件名
+					输入对方主机密码
 
-				3����Զ�ֿ̲��ȡ��Ŀ
-						git clone ������@IP��·��
+				3）从远程仓库获取项目
+					git clone 主机名@IP：路径
 
-				4����Զ�ֿ̲��ȡ����
-						git pull 
+				4）从远程仓库获取代码
+					git pull 
 
-�ˡ�Github����
-				1.Github��һ��������վ��ӵ��ȫ�����Ŀ�Դ��Ŀ
-						Git�Ǹ���վΨһ�Ĺ�������
+八、Github操作
+	1.Github是一个社区网站，拥有全球最多的开源项目
+			Git是该网站唯一的管理工具
